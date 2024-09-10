@@ -10,7 +10,7 @@ https://roadmap.sh/projects/todo-list-api
 
 
 ### postman api
-[postman api](./todo_api.png)
+![postman api](./todo_api.png)
 
 ### project structure
 ```flask_rest_tutorial/
