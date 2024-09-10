@@ -1,6 +1,7 @@
 from flask_restful import Resource, reqparse
 from services.todo_service import TodoService
 from flask import request
+from common.api_tools import token_required
 
 # 获取前端返回的数据中的特定参数
 # 
@@ -10,6 +11,8 @@ parser.add_argument('description', type=str, required=True, help='todo descripti
 
 
 class TodoListResources(Resource):
+    
+    @token_required()
     def get(self):
         page = request.args.get('page',default=1, type=int)
         limit = request.args.get('limit',default=10, type=int)
@@ -18,6 +21,7 @@ class TodoListResources(Resource):
         
         return todos
     
+    @token_required()
     def post(self):
         args = parser.parse_args()
         title = args['title']
@@ -27,12 +31,13 @@ class TodoListResources(Resource):
 
 
 class TodoResources(Resource):
+    @token_required()
     def get(self, todo_id):
         # 获取单个todo item
         todo = TodoService.get_item(todo_id)
         return todo
         
-    
+    @token_required()
     def put(self, todo_id):
         args = parser.parse_args()
         title = args['title']
@@ -41,6 +46,7 @@ class TodoResources(Resource):
         todo = TodoService.update(todo_id, title, description)
         return {'message':'todo item successfully updated','updated todo item': todo}
     
+    @token_required()
     def delete(self, todo_id):
         delete_todo = TodoService.delete(todo_id)
         return {'message':'delete todo item successfully!','todo item details': delete_todo}

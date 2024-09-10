@@ -1,6 +1,8 @@
 from flask import Flask
-from models.todo_model import db
+from flask_sqlalchemy import SQLAlchemy
+from common.db import db
 from routes.todo_routes import todo_bp
+from routes.user_routes import user_bp
 
 app = Flask(__name__)
 app.config.from_object('common.config.Config')
@@ -13,6 +15,7 @@ with app.app_context():
 
 
 app.register_blueprint(todo_bp)
+app.register_blueprint(user_bp)
 
 
 if __name__ == "__main__":

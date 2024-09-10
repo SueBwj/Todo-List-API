@@ -1,7 +1,4 @@
-from flask_sqlalchemy import SQLAlchemy
-
-db = SQLAlchemy()
-
+from common.db import db
 
 # 构建数据库结构
 class TodoItem(db.Model):
