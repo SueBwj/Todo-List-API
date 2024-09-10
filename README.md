@@ -8,7 +8,7 @@
 ### project url
 https://roadmap.sh/projects/todo-list-api
 
-flask_rest_tutorial/
+```flask_rest_tutorial/
 │
 ├── common/                  # 常用工具函数或配置文件
 │   └── __init__.py
@@ -32,5 +32,5 @@ flask_rest_tutorial/
 │
 ├── app.py                  # Flask应用主入口
 ├── requirements.txt         # 依赖包列表
-   
+```   
 
